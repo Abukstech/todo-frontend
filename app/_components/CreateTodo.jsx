@@ -12,8 +12,8 @@ const handleAddTask = () =>{
 
   return (
     <div>
-      <input type="text"  onChange={(e)=>setTask(e.target.value)}/>
-      <button onClick={handleAddTask}>Add task</button>
+      <input type="text" className='border-2 py-2'  onChange={(e)=>setTask(e.target.value)}/>
+      <button onClick={handleAddTask} className='bg-blue-600 text-white px-4 py-2 ml-4  rounded-lg'>Add task</button>
     </div>
   )
 }

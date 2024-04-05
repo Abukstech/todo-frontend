@@ -8,10 +8,10 @@ import { RiInstagramFill } from "react-icons/ri";
 
 const Footer = () => {
   return (
-   <main className='bg-[#EFF0FA] py-5'>
-     <div className='flex justify-around'>
+   <main className='bg-[#EFF0FA] py-5 '>
+     <div className='flex justify-around py-3 '>
         <div>
-<Image src={logo} alt=''/>
+<Image src={logo} alt=''/> 
         </div>
 
         <div className='flex justify-between gap-5'>
@@ -33,6 +33,12 @@ const Footer = () => {
         <RiInstagramFill/>
         </div>
      </div>
+<div className='border-b-2 border-[ #D6D6D6] mx-[160px]'>
+
+</div>
+
+<p className='text-center mt-4' > © {new Date().getFullYear()} by SmartChain Limited. All rights reserved</p>
+    
    </main>
   )
 }
