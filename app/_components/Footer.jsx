@@ -9,12 +9,12 @@ import { RiInstagramFill } from "react-icons/ri";
 const Footer = () => {
   return (
    <main className='bg-[#EFF0FA] py-5 '>
-     <div className='flex justify-around py-3 '>
+     <div className='flex flex-col md:flex-row justify-around items-center gap-2 py-3 '>
         <div>
 <Image src={logo} alt=''/> 
         </div>
 
-        <div className='flex justify-between gap-5'>
+        <div className='flex flex-col md:flex-row justify-between gap-5'>
         <Link href="#"
    >
     <p>About Us</p>

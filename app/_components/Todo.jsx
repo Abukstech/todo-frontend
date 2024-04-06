@@ -1,8 +1,8 @@
 "use client"
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import {BsCircleFill , BsFillCheckCircleFill, BsTrash2Fill}  from "react-icons/bs"
 import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
+import { BsFillTrashFill } from "react-icons/bs";
 
 const Todo = () => {
     const[todos, setTodos] = useState([]);
@@ -17,9 +17,14 @@ useEffect(()=>{
 fetchtasks()
 }, [])
 
-const handleEdit = (id,done) => {
-    axios.put("https://todo-app-1o5j.onrender.com/update/" + id, {done})
-    .then(response => console.log(response))
+const handleEdit = (id, isChecked) => {
+  const done = isChecked;
+    axios.put("https://todo-app-1o5j.onrender.com/update/" + id , {done} )
+    .then(response => {
+     console.log(response)
+     location.reload()
+    })
+    fetchtasks();
 }
 
 const handleDelete= (id ) => {
@@ -36,17 +41,18 @@ const handleDelete= (id ) => {
   todos.map(todo => (
     
     <div key={todo._id} onClick={()=>{handleEdit(todo._id)}} className='' >
-<div className='flex items-center justify-between  bg-slate-400 text-white w-[345px] h-[25px] py-[2px] px-[4px]'>
+<div className='flex items-center justify-between  bg-white border-2 border-black py-3 text-black w-[200px] md:w-[345px] h-[40px]  px-3'>
 <div className='flex items-center'>
-{todo.done ? <BsFillCheckCircleFill className='mr-[5px] text-[15px] cursor-pointer '/> :   <BsCircleFill className='mr-[5px] text-[15px] cursor-pointer '/> }
-         
+         <input type='checkbox' className='mr-[5px] text-[15px] cursor-pointer' checked={todo.done}
+         onChange={e => handleEdit(todo._id, e.target.checked)}
+         />
          <h2 className={todo.done && "line-through"}>{todo.task}</h2> 
         
 </div>
 
 
 <div onClick={()=> {handleDelete(todo._id)}} >
-<span className='ml-[4px] mr-[5px] '><BsTrash2Fill className='cursor-pointer'/></span>
+<span className='ml-[4px] mr-[5px] '><BsFillTrashFill className='cursor-pointer ' color='red'/></span>
 </div>
 </div>
 <p >Created Task : {dayjs(todo.createdAt).format("DD MMM YYYY HH:mm A")}</p>
